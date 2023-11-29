@@ -43,3 +43,27 @@ header {
   font-weight: 700;
   width: fit-content;
 }
+
+.new-flight-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 2rem;
+}
+
+button {
+  margin-top: 3vmin;
+  border: 1px solid #251a66;
+  border-radius: 5px;
+  color: #251a66;
+  background-color: white;
+  padding: 1vmin 2vmin;
+}
+
+button:hover {
+  border: 2px solid white;
+  color: white;
+  background-color: #251a66;
+  cursor: pointer;
+}
