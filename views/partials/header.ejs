@@ -3,6 +3,19 @@
   <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
   </head>
+
   <body>
-    <h1><%= title %></h1>
+    <header>
+      <p class="header-title">Mongoose Flights</p>
+      <nav>
+        <a href="/">Home</a>
+        &nbsp;|&nbsp;
+        <a href="/flights">All Flights</a>
+      </nav>
+    </header>
+
+    <div class="page-title"><%= title %></div>
