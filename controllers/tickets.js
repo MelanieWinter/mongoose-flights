@@ -16,17 +16,10 @@ async function create(req, res) {
     res.redirect(`/flights/${flight._id}`);
 }
 
-// async function newTicket(req, res) {
-//     const flight = await Flight.findById(req.params.id);
-//     const tickets = await Ticket.find({})
-//     res.render(`tickets/new`, { title: 'Add New Ticket', tickets, flight });
-// }
-
 async function newTicket(req, res) {
     const flight = await Flight.findById(req.params.id);
     
     try {
-        // Query for tickets associated with the current flight
         const tickets = await Ticket.find({ flight: flight._id });
         res.render('tickets/new', { title: 'Add New Ticket', tickets, flight });
     } catch (err) {
