@@ -1,0 +1,66 @@
+<%- include('../partials/header') %>
+
+<section>
+    <div>Airline: <%= flight.airline %></div>
+    <div>Airport: <%= flight.airport %></div>
+    <div>Flight#: <%= flight.flightNo %></div>
+    <div>Departs: <%= flight.departs.toLocaleString() %></div>
+    <div>
+        <ul>
+            <% if (Array.isArray(tickets) && tickets.length > 0) { %>
+                <% tickets.forEach(t => { %>
+                    <li>Seat: <%= t.seat %> - Price: <%= t.price %></li>
+                <% }) %>
+            <% } else { %>
+                <li>No tickets available for this flight</li>
+            <% } %>
+        </ul>
+    </div>
+</section>
+
+<a href="../flights/<%= flight._id %>/tickets/new">New Ticket</a>
+
+
+<br><br><h2>Additional Flight Information</h2>
+
+<form method="POST" action="/flights/<%= flight._id %>/destinations">
+    <label>Destination Airport:
+        <select name="airport">
+            <% const usedAirports = new Set(flight.destinations.map(dest => dest.airport)); %>
+            <% const availableAirports = ["ATL", "LAX", "ORD", "DFW", "DEN", "JFK", "SFO", "SEA", "LAS", "CLT"]; %>
+            <% availableAirports.filter(airport => !usedAirports.has(airport) && airport !== flight.airport).forEach(airport => { %>
+                <option value="<%= airport %>"><%= airport %></option>
+            <% }); %>
+        </select><br>
+    </label>
+    <label>Arrival Time:
+        <input type="datetime-local" name="arrival">
+    </label><br>
+    <input type="submit" value="Add Flight Information">
+</form>
+
+<% if (flight.destinations.length) { %>
+    <table>
+        <thead>
+            <tr>
+                <th>Destination Airport</th>
+                <th>Arrival Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% flight.destinations
+            .sort((a, b) => new Date(a.arrival) - new Date(b.arrival))
+            .forEach(function(d) { %>
+                <tr>
+                    <td><%= d.airport %></td>
+                    <td><%= d.arrival.toLocaleString() %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+<% } else { %>
+    <br><br>
+    <h5>No Additional Flight Information Yet</h5>
+<% } %>
+
+<%- include('../partials/footer') %>

@@ -7,10 +7,16 @@
 body {
   font-family: 'Roboto', sans-serif;
   color: #251a66;
-  overflow: hidden;
 }
 
-a {
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+nav > a {
   font-size: 1.25rem;
   text-decoration: none;
   color: #ffffff;
@@ -44,14 +50,6 @@ header {
   width: fit-content;
 }
 
-.new-flight-div {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  line-height: 2rem;
-}
-
 button {
   margin-top: 3vmin;
   border: 1px solid #251a66;
@@ -67,3 +65,4 @@ button:hover {
   background-color: #251a66;
   cursor: pointer;
 }
+

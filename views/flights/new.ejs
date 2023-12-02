@@ -1,6 +1,5 @@
 <%- include('../partials/header') %>
 
-<div class="new-flight-div">
     <form action="/flights" method="POST">
         <label>Airline:
             <select name="airline">
@@ -22,7 +21,7 @@
                 <option value="LAX">LAX</option>
                 <option value="ORD">ORD</option>
                 <option value="DFW">DFW</option>
-                <option value="DEN">DEN</option>
+                <option value="DEN" selected>DEN</option>
                 <option value="JFK">JFK</option>
                 <option value="SFO">SFO</option>
                 <option value="SEA">SEA</option>
@@ -31,14 +30,13 @@
             </select>
         </label><br>
         <label>Flight#:
-            <input type="number" name="flightNo">
+            <input type="number" name="flightNo" placeholder="10 - 9999">
         </label><br>
         <label>Departs:
-            <input type="date" name="departs">
+            <input type="datetime-local" name="departs" value="<%= departsDate %>">
         </label><br>
         <button type="submit">Add Flight</button>
     </form>
-</div>
 
 
 <p><%= errorMsg %></p>
